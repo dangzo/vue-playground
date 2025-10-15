@@ -7,7 +7,7 @@ export const useFetch = () => {
     return response.json();
   };
 
-  const fetchMovies = async () => fetchData(import.meta.env.VITE_MOVIES_ENDPOINT || '');
+  const fetchMovies = async () => fetchData(import.meta.env.VITE_HORROR_MOVIES_ENDPOINT || '');
 
   return {
     fetchMovies,
