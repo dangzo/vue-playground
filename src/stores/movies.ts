@@ -2,21 +2,26 @@ import { ref } from "vue";
 import { defineStore } from "pinia";
 import type { Movie } from "./movies.type";
 
-const defaultMovies: Array<Movie> = [{
-  uuid: "1",
-  title: "The Shawshank Redemption",
-  director: "Frank Darabont",
-  year: 1994
-}]
-
 export const useMoviesStore = defineStore("movies", () => {
-  const movies = ref<Array<Movie>>([...defaultMovies]);
+  const movies = ref<Array<Movie>>([]);
 
   function addMovie(movie: Movie) {
     movies.value.push(movie);
   }
 
+  function addMovies(moviesToAdd: Array<Movie>) {
+    movies.value = {
+      ...movies.value,
+      ...moviesToAdd.map(m => ({
+        uuid: crypto.randomUUID(),
+        title: m.title,
+        posterURL: m.posterURL,
+      })),
+    };
+  }
+
   function removeMovie(uuid: Movie["uuid"]) {
+    console.log(movies.value)
     movies.value = movies.value.filter(m => m.uuid !== uuid);
   }
 
@@ -26,6 +31,7 @@ export const useMoviesStore = defineStore("movies", () => {
 
     // actions
     addMovie,
+    addMovies,
     removeMovie
   };
 });

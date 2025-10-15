@@ -2,18 +2,16 @@
   <div class="p-4 w-full">
     <h2 class="text-2xl font-bold mb-4">Movies List</h2>
     <ul class="space-y-2">
-      <li v-for="movie in movies" :key="movie.uuid" class="p-4 border rounded shadow-sm hover:shadow-md transition">
-        <h3 class="text-xl font-semibold">
+      <li
+        v-for="movie in movies"
+        :key="movie.uuid"
+        class="p-4 border rounded shadow-sm hover:shadow-md transition"
+      >
+        <h3 class="text-xl font-semibold mb-4">
           {{ movie.title }}
         </h3>
 
-        <p class="text-gray-600">
-          Director: {{ movie.director }}
-        </p>
-
-        <p class="text-gray-600">
-          Year: {{ movie.year }}
-        </p>
+        <img v-if="movie.posterURL" :src="movie.posterURL" class="mx-auto"/>
 
         <RemoveMovieBtn :uuid="movie.uuid" />
       </li>

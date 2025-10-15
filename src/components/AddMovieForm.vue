@@ -3,11 +3,8 @@
     <label for="title">Movie title:</label>
     <input id="title" v-model="movie.title" :class="{ '!border-red-600': isError }" @input="isError = false" />
 
-    <label for="director">Director:</label>
-    <input id="director" v-model="movie.director" />
-
-    <label for="year">Year:</label>
-    <input id="year" v-model="movie.year" type="number" />
+    <label for="posterURL">Poster URL:</label>
+    <input id="posterURL" v-model="movie.posterURL" />
 
     <button
       class="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition"

@@ -13,7 +13,7 @@ import { useMoviesStore } from '@/stores/movies';
 import { useFetch } from '@/api/fetch';
 import { onMounted } from 'vue';
 
-const { addMovie } = useMoviesStore();
+const { addMovie, addMovies } = useMoviesStore();
 const { fetchMovies } = useFetch();
 
 onMounted(async () => {
@@ -22,7 +22,7 @@ onMounted(async () => {
     const data = await fetchMovies();
     
     if (data && Array.isArray(data)) {
-      data.forEach((movie) => addMovie(movie));
+      addMovies(data);
     }
   } catch (e) {
     console.error('Failed to fetch movies: ', e);

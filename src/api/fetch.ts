@@ -7,10 +7,7 @@ export const useFetch = () => {
     return response.json();
   };
 
-  const fetchMovies = async () => {
-    console.log(import.meta.env)
-    return fetchData(import.meta.env.VITE_MOVIES_ENDPOINT || '');
-  };
+  const fetchMovies = async () => fetchData(import.meta.env.VITE_MOVIES_ENDPOINT || '');
 
   return {
     fetchMovies,
