@@ -1,9 +1,9 @@
 <template>
   <form ref="addMovieForm" class="flex flex-col mt-10 w-[400px]" @submit.prevent="addMovie">
-    <label for="title">(*) Movie title:</label>
+    <label class="mb-1" for="title">(*) Movie title:</label>
     <input id="title" v-model="movie.title" :class="{ '!border-red-600': isError }" @input="isError = false" />
 
-    <label for="posterURL">Poster URL:</label>
+    <label class="mb-1" for="posterURL">Poster URL:</label>
     <input id="posterURL" v-model="movie.posterURL" />
 
     <button
