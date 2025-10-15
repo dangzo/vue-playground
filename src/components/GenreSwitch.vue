@@ -1,10 +1,10 @@
 <template>
-  <form @submit.prevent>
+  <form @submit.prevent class="text-left">
     <input type="radio" id="sci-fi" name="genre" value="sci-fi" v-model="selectedGenre" />
-    <label for="sci-fi">Sci-Fi</label>
+    <label class="ml-1 mr-4" for="sci-fi">Sci-Fi</label>
 
     <input type="radio" id="horror" name="genre" value="horror" v-model="selectedGenre" />
-    <label for="horror">Horror</label>
+    <label class="ml-1 mr-4" for="horror">Horror</label>
   </form>
 </template>
 
