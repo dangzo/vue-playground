@@ -1,11 +1,5 @@
 import { defineStore } from "pinia";
-
-type Movie = {
-  uuid: string,
-  director?: string,
-  title: string,
-  year: number
-}
+import type { Movie } from "./movies.type";
 
 const defaultMovies: Array<Movie> = [{
   uuid: "1",
