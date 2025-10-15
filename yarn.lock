@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@alloc/quick-lru@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@alloc/quick-lru/-/quick-lru-5.2.0.tgz#7bf68b20c0a350f936915fcae06f58e32007ce30"
+  integrity sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==
+
 "@babel/helper-string-parser@^7.27.1":
   version "7.27.1"
   resolved "https://registry.yarnpkg.com/@babel/helper-string-parser/-/helper-string-parser-7.27.1.tgz#54da796097ab19ce67ed9f88b47bb2ec49367687"
@@ -445,6 +450,17 @@
     "@tailwindcss/oxide-win32-arm64-msvc" "4.1.14"
     "@tailwindcss/oxide-win32-x64-msvc" "4.1.14"
 
+"@tailwindcss/postcss@^4.1.14":
+  version "4.1.14"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/postcss/-/postcss-4.1.14.tgz#29fd4e082b29460e4062a7bc4bf70b38a97f8fc5"
+  integrity sha512-BdMjIxy7HUNThK87C7BC8I1rE8BVUsfNQSI5siQ4JK3iIa3w0XyVvVL9SXLWO//CtYTcp1v7zci0fYwJOjB+Zg==
+  dependencies:
+    "@alloc/quick-lru" "^5.2.0"
+    "@tailwindcss/node" "4.1.14"
+    "@tailwindcss/oxide" "4.1.14"
+    postcss "^8.4.41"
+    tailwindcss "4.1.14"
+
 "@tailwindcss/vite@^4.1.14":
   version "4.1.14"
   resolved "https://registry.yarnpkg.com/@tailwindcss/vite/-/vite-4.1.14.tgz#94d0fb87b11030138a45cef8ae9c3a7b080d4007"
@@ -867,7 +883,7 @@ pinia@^3.0.3:
   dependencies:
     "@vue/devtools-api" "^7.7.2"
 
-postcss@^8.5.6:
+postcss@^8.4.41, postcss@^8.5.6:
   version "8.5.6"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.5.6.tgz#2825006615a619b4f62a9e7426cc120b349a8f3c"
   integrity sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==
