@@ -1,7 +1,11 @@
 <template>
   <div class="flex flex-row h-screen gap-x-6">
-    <MoviesList />
-    <AddMovieForm @addMovie="addMovie" />
+    <MoviesList class="max-w-[60%]" />
+
+    <div class="pt-6 mx-auto">
+      <GenreSwitch />
+      <AddMovieForm @addMovie="addMovie" />
+    </div>
   </div>
 </template>
 
@@ -12,6 +16,7 @@ import MoviesList from '@/components/MoviesList.vue';
 import { useMoviesStore } from '@/stores/movies';
 import { useFetch } from '@/api/fetch';
 import { onMounted } from 'vue';
+import GenreSwitch from '@/components/GenreSwitch.vue';
 
 const { addMovie, addMovies } = useMoviesStore();
 const { fetchMovies } = useFetch();

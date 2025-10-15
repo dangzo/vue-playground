@@ -1,21 +1,21 @@
 <template>
   <div class="p-4 w-full">
-    <h2 class="text-2xl font-bold mb-4">Movies List</h2>
-    <ul class="space-y-2">
+    <ul class="space-y-2 grid grid-cols-4">
       <li
         v-for="movie in movies"
         :key="movie.uuid"
-        class="p-4 border rounded shadow-sm hover:shadow-md transition"
+        class="p-4 min-h-[300px] flex flex-col justify-between"
       >
-        <h3 class="text-xl font-semibold mb-4">
-          {{ movie.title }}
-        </h3>
+        <div>
+          <h3 class="text-xl font-semibold mb-4">
+            {{ movie.title }}
+          </h3>
 
-        <img v-if="movie.posterURL" :src="movie.posterURL" class="mx-auto" />
+          <!-- TODO: display placeholder if there's no image -->
+          <img v-if="movie.posterURL" :src="movie.posterURL" class="mx-auto" />
+        </div>
 
-        <!-- TODO: display placeholder if there's no image -->
-
-        <RemoveMovieBtn :uuid="movie.uuid" />
+        <RemoveMovieBtn :uuid="movie.uuid" class="" />
       </li>
     </ul>
   </div>
