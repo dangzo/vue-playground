@@ -10,18 +10,17 @@ export const useMoviesStore = defineStore("movies", () => {
   }
 
   function addMovies(moviesToAdd: Array<Movie>) {
-    movies.value = {
+    movies.value = [
       ...movies.value,
       ...moviesToAdd.map(m => ({
         uuid: crypto.randomUUID(),
         title: m.title,
         posterURL: m.posterURL,
       })),
-    };
+    ];
   }
 
   function removeMovie(uuid: Movie["uuid"]) {
-    console.log(movies.value)
     movies.value = movies.value.filter(m => m.uuid !== uuid);
   }
 

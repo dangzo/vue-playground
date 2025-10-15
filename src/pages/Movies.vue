@@ -22,7 +22,7 @@ onMounted(async () => {
     const data = await fetchMovies();
     
     if (data && Array.isArray(data)) {
-      addMovies(data);
+      addMovies(data.slice(0, 20)); // Add only the first 20 movies
     }
   } catch (e) {
     console.error('Failed to fetch movies: ', e);
