@@ -1,6 +1,6 @@
 <template>
   <form ref="addMovieForm" class="flex flex-col mt-10 w-[400px]" @submit.prevent="addMovie">
-    <label for="title">Movie title:</label>
+    <label for="title">(*) Movie title:</label>
     <input id="title" v-model="movie.title" :class="{ '!border-red-600': isError }" @input="isError = false" />
 
     <label for="posterURL">Poster URL:</label>
@@ -43,8 +43,11 @@ function addMovie() {
 
   // Emit the movie to the parent component
   emit('add-movie', { ...movie, uuid: crypto.randomUUID() });
-  
+
+  // Reset form and local state
   addMovieForm?.value?.reset();
+  movie.title = '';
+  movie.posterURL = '';
 }
 
 </script>
