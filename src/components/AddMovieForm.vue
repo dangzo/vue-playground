@@ -1,5 +1,5 @@
 <template>
-  <form class="flex flex-col mt-10 w-[400px]" @submit.prevent="addMovie">
+  <form ref="addMovieForm" class="flex flex-col mt-10 w-[400px]" @submit.prevent="addMovie">
     <label for="title">Movie title:</label>
     <input id="title" v-model="movie.title" :class="{ '!border-red-600': isError }" @input="isError = false" />
 
@@ -19,10 +19,11 @@
 </template>
 
 <script setup lang="ts">
-import { defineEmits, ref, reactive } from 'vue';
+import { defineEmits, ref, reactive, useTemplateRef } from 'vue';
 import type { Movie } from '@/stores/movies.type';
 
 const isError = ref<boolean>(false);
+const addMovieForm = useTemplateRef<HTMLFormElement | null>('addMovieForm');
 
 const emit = defineEmits<{
   (e: 'add-movie', movie: Movie): void;
@@ -45,6 +46,8 @@ function addMovie() {
 
   // Emit the movie to the parent component
   emit('add-movie', { ...movie, uuid: crypto.randomUUID() });
+  
+  addMovieForm?.value?.reset();
 }
 
 </script>
