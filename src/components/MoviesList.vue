@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { useMoviesStore } from '@/stores/moviesStore';
+import { useMoviesStore } from '@/stores/movies';
 
 import RemoveMovieBtn from './RemoveMovieBtn.vue';
 

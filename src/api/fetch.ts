@@ -8,7 +8,8 @@ export const useFetch = () => {
   };
 
   const fetchMovies = async () => {
-    return fetchData(process.env.MOVIES_ENDPOINT || '');
+    console.log(import.meta.env)
+    return fetchData(import.meta.env.VITE_MOVIES_ENDPOINT || '');
   };
 
   return {

@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import type { Movie } from '@/stores/movies.type';
 import { defineProps } from 'vue';
-import { useMoviesStore } from '@/stores/moviesStore'; 
+import { useMoviesStore } from '@/stores/movies'; 
 
 defineProps<{
   uuid: Movie['uuid'];
