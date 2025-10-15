@@ -1,7 +1,7 @@
 <template>
-  <Playground />
+  <Movies />
 </template>
 
 <script setup lang="ts">
-import Playground from './components/Playground.vue'
+import Movies from './pages/Movies.vue'
 </script>

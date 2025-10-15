@@ -19,10 +19,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { defineEmits, ref, reactive } from 'vue';
 import type { Movie } from '@/stores/movies.type';
 
 const isError = ref<boolean>(false);
+
+const emit = defineEmits<{
+  (e: 'add-movie', movie: Movie): void;
+}>();
 
 const movie = reactive<Movie>({
   uuid: crypto.randomUUID(),
@@ -39,8 +43,8 @@ function addMovie() {
     return;
   }
 
-  // Logic to add the movie
-  console.log('Adding movie:', movie);
+  // Emit the movie to the parent component
+  emit('add-movie', { ...movie, uuid: crypto.randomUUID() });
 }
 
 </script>

@@ -1,3 +1,4 @@
+import { ref } from "vue";
 import { defineStore } from "pinia";
 import type { Movie } from "./movies.type";
 
@@ -9,20 +10,21 @@ const defaultMovies: Array<Movie> = [{
 }]
 
 export const useMoviesStore = defineStore("movies", () => {
-  const movies: Array<Movie> = [...defaultMovies];
+  const movies = ref<Array<Movie>>([...defaultMovies]);
 
   function addMovie(movie: Movie) {
-    movies.push(movie);
+    movies.value.push(movie);
   }
 
   function removeMovie(uuid: Movie["uuid"]) {
-    movies.filter(m => m.uuid !== uuid);
+    movies.value = movies.value.filter(m => m.uuid !== uuid);
   }
 
   return {
     // state
     movies,
-    // methods
+
+    // actions
     addMovie,
     removeMovie
   };

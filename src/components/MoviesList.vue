@@ -12,8 +12,9 @@
 </template>
 
 <script setup lang="ts">
+import { storeToRefs } from 'pinia';
 import { useMoviesStore } from '@/stores/moviesStore';
 
 const moviesStore = useMoviesStore();
-const movies = moviesStore.movies;
+const { movies } = storeToRefs(moviesStore);
 </script>
