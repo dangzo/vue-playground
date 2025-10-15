@@ -8,22 +8,41 @@
   </ul>
 
   <div>
-    <button @click="count++">Increment count</button>
+    <button @click="incCount">Increment count</button>
     <button @click="person.age++">Increment age</button>
-    <button @click="person.firstName = person.firstName === 'Alice' ? 'Bob' : 'Alice'">
+    <button @click="toggleFirstName()">
       Toggle first name
     </button>
+  </div>
+
+  <div :style="{ marginTop: '24px' }">
+    <div>Input text: {{ inputText }}</div>
+    <div>Type here: <input v-model="inputText" /></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { reactive, ref, watchEffect, isRef } from 'vue'
+
+const inputText = ref('')
 
 const count = ref(0)
 const person = reactive({
   firstName: 'Alice',
   lastName: 'Smith',
   age: 30
+})
+
+function toggleFirstName() {
+  person.firstName = person.firstName === 'Alice' ? 'Bob' : 'Alice'
+}
+
+function incCount() {
+  count.value++
+}
+
+watchEffect(() => {
+  console.log(`Something changes! Count value: ${isRef(count)}, Person: ${person.firstName} ${person.lastName}, Age: ${person.age}`)
 })
 </script>
 
