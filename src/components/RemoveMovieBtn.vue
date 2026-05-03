@@ -1,6 +1,6 @@
 <template>
   <button
-    class="bg-red-500 text-white py-1 px-2 rounded hover:bg-red-600 transition text-xs mt-4 font-bold"
+    class="remove-btn"
     @click="removeMovie(uuid)"
   >
     Remove
@@ -9,7 +9,6 @@
 
 <script setup lang="ts">
 import type { Movie } from '@/stores/movies.type';
-import { defineProps } from 'vue';
 import { useMoviesStore } from '@/stores/movies'; 
 
 defineProps<{
@@ -18,3 +17,22 @@ defineProps<{
 
 const { removeMovie } = useMoviesStore();
 </script>
+
+<style scoped>
+.remove-btn {
+  margin-top: 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  background-color: #ef4444;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.remove-btn:hover {
+  background-color: #dc2626;
+}
+</style>

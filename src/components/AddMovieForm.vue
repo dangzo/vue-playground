@@ -1,13 +1,13 @@
 <template>
-  <form ref="addMovieForm" class="flex flex-col mt-10 w-[400px]" @submit.prevent="addMovie">
-    <label class="mb-1" for="title">(*) Movie title:</label>
-    <input id="title" v-model="movie.title" :class="{ '!border-red-600': isError }" @input="isError = false" />
+  <form ref="addMovieForm" class="add-movie-form" @submit.prevent="addMovie">
+    <label class="form-label" for="title">(*) Movie title:</label>
+    <input id="title" v-model="movie.title" :class="{ 'is-error': isError }" @input="isError = false" />
 
-    <label class="mb-1" for="posterURL">Poster URL:</label>
+    <label class="form-label" for="posterURL">Poster URL:</label>
     <input id="posterURL" v-model="movie.posterURL" />
 
     <button
-      class="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition"
+      class="submit-btn"
       type="submit"
     >
       Add Movie
@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineEmits, ref, reactive, useTemplateRef } from 'vue';
+import { ref, reactive, useTemplateRef } from 'vue';
 import type { Movie } from '@/stores/movies.type';
 
 const isError = ref<boolean>(false);
@@ -53,6 +53,18 @@ function addMovie() {
 </script>
 
 <style scoped>
+.add-movie-form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin-top: 2.5rem;
+}
+
+.form-label {
+  margin-bottom: 0.25rem;
+  text-align: left;
+}
+
 input {
   border: solid 1px #d1d5db;
   border-radius: 0.375rem;
@@ -60,7 +72,28 @@ input {
   margin-bottom: 1rem;
 }
 
-label {
-  text-align: left;
+.is-error {
+  border-color: #dc2626;
+}
+
+.submit-btn {
+  margin-top: 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  background-color: #3b82f6;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #2563eb;
+}
+
+@media (max-width: 640px) {
+  .add-movie-form {
+    width: 100%;
+  }
 }
 </style>

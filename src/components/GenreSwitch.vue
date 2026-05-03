@@ -1,10 +1,10 @@
 <template>
-  <form @submit.prevent class="text-left">
+  <form @submit.prevent class="genre-switch">
     <input type="radio" id="horror" name="genre" value="horror" v-model="selectedGenre" />
-    <label class="ml-1 mr-4" for="horror">Horror</label>
+    <label class="genre-label" for="horror">Horror</label>
 
     <input type="radio" id="sci-fi" name="genre" value="sci-fi" v-model="selectedGenre" />
-    <label class="ml-1 mr-4" for="sci-fi">Sci-Fi</label>
+    <label class="genre-label" for="sci-fi">Sci-Fi</label>
   </form>
 </template>
 
@@ -15,3 +15,14 @@ type Genre = 'sci-fi' | 'horror';
 
 const selectedGenre = ref<Genre>('horror');
 </script>
+
+<style scoped>
+.genre-switch {
+  text-align: left;
+}
+
+.genre-label {
+  margin-left: 0.25rem;
+  margin-right: 1rem;
+}
+</style>

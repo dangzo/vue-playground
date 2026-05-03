@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-row h-screen gap-x-6">
-    <MoviesList class="max-w-[60%]" />
+  <div class="movies-layout">
+    <MoviesList class="movies-list-panel" />
 
-    <div class="pt-6 mx-auto">
+    <div class="movies-sidebar">
       <GenreSwitch />
       <AddMovieForm @addMovie="addMovie" />
     </div>
@@ -34,3 +34,39 @@ onMounted(async () => {
   }
 });
 </script>
+
+<style scoped>
+.movies-layout {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  gap: 1.5rem;
+}
+
+.movies-list-panel {
+  flex: 1;
+  max-width: 60%;
+}
+
+.movies-sidebar {
+  padding-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 1024px) {
+  .movies-layout {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .movies-list-panel {
+    max-width: 100%;
+  }
+
+  .movies-sidebar {
+    width: 100%;
+    padding-top: 0;
+  }
+}
+</style>
