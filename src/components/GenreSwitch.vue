@@ -1,27 +1,47 @@
 <template>
-  <form @submit.prevent class="genre-switch">
-    <input type="radio" id="horror" name="genre" value="horror" v-model="selectedGenre" />
-    <label class="genre-label" for="horror">Horror</label>
-
-    <input type="radio" id="sci-fi" name="genre" value="sci-fi" v-model="selectedGenre" />
-    <label class="genre-label" for="sci-fi">Sci-Fi</label>
-  </form>
+  <div class="genre-switch">
+    <button
+      v-for="(genre, index) of genres"
+      :key="index"
+      :class="['genre', { 'genre--active': index === activeGenreIndex }]"
+      @click="setActiveGenre(index)"
+    >
+      {{ genre }}
+    </button>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import type { Genre } from '@/types/genres';
+import useGenresStore from '@/stores/genres';
+import { storeToRefs } from 'pinia';
 
-const selectedGenre = ref<Genre>('horror');
+const genresStore = useGenresStore();
+
+const { genres, activeGenreIndex } = storeToRefs(genresStore);
+const { setActiveGenre } = genresStore;
 </script>
 
-<style scoped>
+<style scoped lang="css">
 .genre-switch {
-  text-align: left;
+  display: flex;
 }
 
-.genre-label {
-  margin-left: 0.25rem;
-  margin-right: 1rem;
+.genre {
+  flex: 1;
+
+  &[class*='--active'] {
+    background-color:#444;
+    border: solid 1px white;
+  }
+
+  &:not(:first-of-type) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  &:not(:last-of-type) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 }
 </style>

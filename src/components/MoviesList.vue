@@ -1,6 +1,5 @@
 <template>
-  <div class="movies-list-wrapper">
-
+  <article class="movies-list-wrapper">
     <p v-if="!movies.length">No movies found.</p>
 
     <ul v-else class="movies-grid">
@@ -26,13 +25,13 @@
         <RemoveMovieBtn :uuid="movie.uuid" />
       </li>
     </ul>
-  </div>
+  </article>
 </template>
 
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { useMoviesStore } from '@/stores/movies';
 import RemoveMovieBtn from './RemoveMovieBtn.vue';
+import useMoviesStore from '@/stores/movies';
 
 const moviesStore = useMoviesStore();
 

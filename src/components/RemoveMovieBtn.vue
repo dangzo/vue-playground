@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import type { Movie } from '@/types/movies';
-import { useMoviesStore } from '@/stores/movies'; 
+import useMoviesStore from '@/stores/movies'; 
 
 defineProps<{
   uuid: Movie['uuid'];

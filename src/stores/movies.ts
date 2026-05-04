@@ -2,22 +2,19 @@ import { ref } from "vue";
 import { defineStore } from "pinia";
 import type { Movie } from "@/types/movies";
 
-export const useMoviesStore = defineStore("movies", () => {
+const useMoviesStore = defineStore("movies", () => {
   const movies = ref<Array<Movie>>([]);
 
   function addMovie(movie: Movie) {
     movies.value.push(movie);
   }
 
-  function addMovies(moviesToAdd: Array<Movie>) {
-    movies.value = [
-      ...movies.value,
-      ...moviesToAdd.map(m => ({
-        uuid: crypto.randomUUID(),
-        title: m.title,
-        posterURL: m.posterURL,
-      })),
-    ];
+  function setMovies(moviesToAdd: Array<Movie>) {
+    movies.value = moviesToAdd.map(m => ({
+      uuid: crypto.randomUUID(),
+      title: m.title,
+      posterURL: m.posterURL,
+    }));
   }
 
   function removeMovie(uuid: Movie["uuid"]) {
@@ -30,7 +27,9 @@ export const useMoviesStore = defineStore("movies", () => {
 
     // actions
     addMovie,
-    addMovies,
+    setMovies,
     removeMovie
   };
 });
+
+export default useMoviesStore;

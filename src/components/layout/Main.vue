@@ -1,17 +1,17 @@
 <template>
-  <div class="movies-wrapper">
+  <main class="movies-wrapper">
     <MoviesList />
-  </div>
+  </main>
 </template>
 
 <script setup lang="ts">
 import MoviesList from '@/components/MoviesList.vue';
+import useMoviesStore from '@/stores/movies';
 
-import { useMoviesStore } from '@/stores/movies';
 import { useFetch } from '@/api/fetch';
 import { onMounted } from 'vue';
 
-const { addMovies } = useMoviesStore();
+const { setMovies } = useMoviesStore();
 const { fetchMovies } = useFetch();
 
 onMounted(async () => {
@@ -20,7 +20,7 @@ onMounted(async () => {
     const data = await fetchMovies();
     
     if (data && Array.isArray(data)) {
-      addMovies(data.slice(0, 20)); // Add only the first 20 movies
+      setMovies(data.slice(0, 20)); // Add only the first 20 movies
     }
   } catch (e) {
     console.error('Failed to fetch movies: ', e);
