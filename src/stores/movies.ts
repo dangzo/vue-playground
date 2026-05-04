@@ -1,6 +1,6 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
-import type { Movie } from "./movies.type";
+import type { Movie } from "@/types/movies";
 
 export const useMoviesStore = defineStore("movies", () => {
   const movies = ref<Array<Movie>>([]);

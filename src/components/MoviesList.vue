@@ -1,8 +1,11 @@
 <template>
   <div class="movies-list-wrapper">
-    <ul class="movies-grid">
+
+    <p v-if="!movies.length">No movies found.</p>
+
+    <ul v-else class="movies-grid">
       <li
-        v-for="movie in movies"
+        v-for="(movie, index) in movies"
         :key="movie.uuid"
         class="movie-card"
       >
@@ -12,7 +15,12 @@
           </h3>
 
           <!-- TODO: display placeholder if there's no image -->
-          <img v-if="movie.posterURL" :src="movie.posterURL" class="movie-poster" />
+          <img
+            v-if="movie.posterURL"
+            :src="movie.posterURL"
+            :alt="`Image for movie #${index}`"
+            class="movie-poster"
+          />
         </div>
 
         <RemoveMovieBtn :uuid="movie.uuid" />

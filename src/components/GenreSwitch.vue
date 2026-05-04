@@ -10,8 +10,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-
-type Genre = 'sci-fi' | 'horror';
+import type { Genre } from '@/types/genres';
 
 const selectedGenre = ref<Genre>('horror');
 </script>

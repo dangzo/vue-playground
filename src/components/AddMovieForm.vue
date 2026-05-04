@@ -1,7 +1,13 @@
 <template>
   <form ref="addMovieForm" class="add-movie-form" @submit.prevent="addMovie">
     <label class="form-label" for="title">(*) Movie title:</label>
-    <input id="title" v-model="movie.title" :class="{ 'is-error': isError }" @input="isError = false" />
+    <input
+      id="title"
+      v-model="movie.title"
+      :class="{ 'is-error': isError }"
+      @input="isError = false"
+    />
+    <p class="is-error" v-if="isError">Movie title is required.</p>
 
     <label class="form-label" for="posterURL">Poster URL:</label>
     <input id="posterURL" v-model="movie.posterURL" />
@@ -17,7 +23,7 @@
 
 <script setup lang="ts">
 import { ref, reactive, useTemplateRef } from 'vue';
-import type { Movie } from '@/stores/movies.type';
+import type { Movie } from '@/types/movies';
 
 const isError = ref<boolean>(false);
 const addMovieForm = useTemplateRef<HTMLFormElement | null>('addMovieForm');
@@ -49,7 +55,6 @@ function addMovie() {
   movie.title = '';
   movie.posterURL = '';
 }
-
 </script>
 
 <style scoped>
@@ -74,6 +79,13 @@ input {
 
 .is-error {
   border-color: #dc2626;
+}
+p.is-error {
+  color: #dc2626;
+  margin-top: -0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  text-align: left;
 }
 
 .submit-btn {
