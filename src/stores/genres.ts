@@ -14,6 +14,10 @@ const useGenresStore = defineStore('genres', () => {
     }
   }
 
+  function activeGenre(): Genre {
+    return genres.value[activeGenreIndex.value]!;
+  }
+
   return {
     // state
     genres,
@@ -21,6 +25,9 @@ const useGenresStore = defineStore('genres', () => {
 
     // actions
     setActiveGenre,
+
+    // computed
+    activeGenre,
   }
 });
 

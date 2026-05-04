@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <div class="content-container">
-      <Header />
+      <Header v-bind:genre="genresStore.activeGenre()" />
       <Main />
     </div>
     <div class="sidebar-container">
@@ -14,6 +14,10 @@
 import Header from '@/components/layout/Header.vue'
 import Main from '@/components/layout/Main.vue'
 import Sidebar from '@/components/layout/Sidebar.vue';
+
+import useGenresStore from './stores/genres';
+
+const genresStore = useGenresStore();
 </script>
 
 <style lang="css" scoped>
