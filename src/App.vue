@@ -24,6 +24,8 @@ const genresStore = useGenresStore();
 .main-container {
   display: flex;
   flex-direction: row;
+  max-width: 1400px;
+  margin: auto;
 }
 
 .content-container {

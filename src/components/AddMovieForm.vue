@@ -22,38 +22,34 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, useTemplateRef } from 'vue';
-import type { Movie } from '@/types/movies';
+import { ref, useTemplateRef } from 'vue';
+import type { Movie } from '@/types/movies'
 
-const isError = ref<boolean>(false);
-const addMovieForm = useTemplateRef<HTMLFormElement | null>('addMovieForm');
-
-const emit = defineEmits<{
-  (e: 'add-movie', movie: Movie): void;
-}>();
-
-const movie = reactive<Movie>({
-  uuid: crypto.randomUUID(),
+const movie = ref<Omit<Movie, 'uuid'>>({
   title: '',
 });
+const isError = ref<boolean>(false)
 
-function validateMovie(m: Movie): boolean {
-  return !!m.title;
-}
+const emit = defineEmits<{
+  (e: 'add-movie', movie: Movie): void
+}>();
+
+const addMovieFormRef = useTemplateRef('addMovieForm');
 
 function addMovie() {
-  if (!validateMovie(movie)) {
+  if (!movie.value.title.length) {
     isError.value = true;
     return;
   }
 
-  // Emit the movie to the parent component
-  emit('add-movie', { ...movie, uuid: crypto.randomUUID() });
+  // emit movie
+  emit('add-movie', {
+    uuid: crypto.randomUUID(),
+    ...movie.value
+  })
 
-  // Reset form and local state
-  addMovieForm?.value?.reset();
-  movie.title = '';
-  movie.posterURL = '';
+  // reset movie form
+  addMovieFormRef.value?.reset()
 }
 </script>
 
