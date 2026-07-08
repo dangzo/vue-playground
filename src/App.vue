@@ -1,4 +1,6 @@
 <template>
+  <Notification />
+
   <div class="main-container">
     <div class="content-container">
       <Header v-bind:genre="genresStore.activeGenre()" />
@@ -14,6 +16,7 @@
 import Header from '@/components/layout/Header.vue'
 import Main from '@/components/layout/Main.vue'
 import Sidebar from '@/components/layout/Sidebar.vue';
+import Notification from '@/components/Notification.vue';
 
 import useGenresStore from './stores/genres';
 
