@@ -1,6 +1,12 @@
 <template>
   <main class="movies-wrapper">
     <MoviesList />
+
+    <div class="flex flex-col gap-4">
+      <button @click="showNotification({ message: 'This is a test notification.', type: 'info' })">
+        Queue notification
+      </button>
+    </div>
   </main>
 </template>
 
